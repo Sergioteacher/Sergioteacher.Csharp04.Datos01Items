@@ -1,0 +1,108 @@
+﻿<Window x:Class="Sergioteacher.Csharp04.Datos01Items.MainWindow"
+        x:Name="Ventana1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sergioteacher.Csharp04.Datos01Items"
+        mc:Ignorable="d"
+        Title="Trabajando con Items ..." Height="450" Width="800" Background="#FF9FBBA4" FontSize="20">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+
+
+        <Button x:Name="BCombo" Click="BCombo_Click" Content=" ComboBox " Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center"  VerticalAlignment="Center" />
+
+        <StackPanel Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center"  VerticalAlignment="Top" >
+            <Button x:Name="BItem" Click="BItem_Click"  Content=" Items ... " MaxWidth="100"  />
+            <TextBlock Margin="10" Foreground="Aqua" >
+                Mostrando datos <LineBreak /> sin poder interactuar ...
+            </TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center"  VerticalAlignment="Top" >
+            <Button x:Name="BList" Click="BList_Click" Content=" ListBox  " HorizontalAlignment="Center"  VerticalAlignment="Center" />
+            <TextBlock Margin="10" Foreground="ForestGreen" >
+                Mostrando datos <LineBreak /> ahora ¡sí! interactuas
+            </TextBlock>
+        </StackPanel>
+        <ScrollViewer x:Name="SLista" Visibility="Hidden" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <ItemsControl x:Name="UnaRistra" >
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{Binding Titulo}" />
+                            <ProgressBar Grid.Column="1" Minimum="0" Maximum="100" Value="{Binding Completacion}" />
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+        <ListBox x:Name="LunaLista" SelectionChanged="LunaLista_SelectionChanged" Visibility="Hidden"  Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"  >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="100" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding Titulo}" Grid.Column="0"/>
+                        <ProgressBar Grid.Column="1" Minimum="0" Maximum="100" Value="{Binding Completacion}"  />
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <TextBlock x:Name="Tdebug1" Grid.Column="0" Grid.Row="3" TextWrapping="Wrap" Text="iniciando ..." HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center"  >
+            <TextBlock x:Name="Tdebug2" Margin="8" TextWrapping="Wrap" Text="ini ..."  VerticalAlignment="Center" />
+            <TextBlock x:Name="Tdebug3" Margin="8" TextWrapping="Wrap" Text="ini ..."  VerticalAlignment="Center" />
+        </StackPanel>
+
+        <StackPanel x:Name="SPaux1" Visibility="Hidden"  Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Center"  >
+            <Button x:Name="Bselecion" Click="Bselecion_Click" Content=" Mostrar selecionado " Margin="2" HorizontalAlignment="Center"  VerticalAlignment="Center" />
+            <Button x:Name="Btodo" IsEnabled="False" Click="Btodo_Click" Content=" Selecionar todo " Margin="2" HorizontalAlignment="Center"  VerticalAlignment="Center" />
+            <Button x:Name="Bantes" Click="Bantes_Click" Content=" Selecionar  anterior " Margin="2" HorizontalAlignment="Center"  VerticalAlignment="Center" />
+            <Button x:Name="Bnext" Click="Bnext_Click" Content=" Selecionar siguiente" Margin="2" HorizontalAlignment="Center"  VerticalAlignment="Center" />
+            <Button x:Name="Bcoche" Click="Bcoche_Click" Content=" Selecionar `coche' " Margin="2" HorizontalAlignment="Center"  VerticalAlignment="Center" />
+        </StackPanel>
+        <StackPanel x:Name="SPaux2" Visibility="Hidden"  Grid.Column="2" Grid.Row="3" VerticalAlignment="Center"  >
+            <CheckBox x:Name="CMultiple" Click="CMultiple_Click" Content="Multiple selección" Margin="2" HorizontalAlignment="Center" Padding="5,-5,0,0"/>
+            <Label x:Name="Llimpia" MouseMove="Llimpia_MouseMove"  Content="Desselecionar" Margin="2" HorizontalAlignment="Center" Background="LightCyan"/>
+        </StackPanel>
+        <ComboBox x:Name="Clista" Visibility="Hidden" SelectionChanged="Clista_SelectionChanged" Margin="10" Grid.Column="0" Grid.ColumnSpan="2"  Grid.Row="1" VerticalAlignment="Top" >
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" >
+                        <ProgressBar Minimum="0" Maximum="100" Value="{Binding Completacion}" Width="100" />
+                        <TextBlock Text="{Binding Titulo}" Grid.Column="0"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <ComboBox x:Name="Ccolor" Visibility="Hidden" SelectionChanged="Ccolor_SelectionChanged" Grid.Column="2"  Grid.Row="1" VerticalAlignment="Top" >
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Rectangle Fill="{Binding Name}" Width="16" Height="16" Margin="2" />
+                        <TextBlock Text="{Binding Name}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Label x:Name="LlimpiaColor" Visibility="Hidden" MouseMove="LlimpiaColor_MouseMove" Grid.Column="2" Grid.Row="3" Content="Reestablece el Color Inicial"  HorizontalAlignment="Center" Foreground="Indigo"  Background="#FF9FBBA4" VerticalAlignment="Center"/>
+    </Grid>
+</Window>

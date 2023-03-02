@@ -1,0 +1,9 @@
+﻿<Application x:Class="Sergioteacher.Csharp04.Datos01Items.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Sergioteacher.Csharp04.Datos01Items"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>
